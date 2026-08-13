@@ -436,7 +436,7 @@ section {
   position: relative;
   z-index: 2;
   display: grid;
-  grid-template-columns: repeat(3,1fr);
+  grid-template-columns: repeat(4,1fr);
   gap: 20px;
 }
 
@@ -1208,13 +1208,45 @@ footer {
 
         <div
           class="stat-number project-counter"
-          data-target="94"
+          data-target="2"
         >
           0
         </div>
 
         <div class="stat-label">
-          Events / project interactions
+          Students involved
+        </div>
+
+      </div>
+
+
+      <div class="stat-card reveal">
+
+        <div
+          class="stat-number project-counter"
+          data-target="24"
+        >
+          0
+        </div>
+
+        <div class="stat-label">
+          Volunteer hours
+        </div>
+
+      </div>
+
+
+      <div class="stat-card reveal">
+
+        <div
+          class="stat-number project-counter"
+          data-target="31"
+        >
+          0
+        </div>
+
+        <div class="stat-label">
+          People reached through this website
         </div>
 
       </div>
@@ -1231,22 +1263,6 @@ footer {
 
         <div class="stat-label">
           Countries reached
-        </div>
-
-      </div>
-
-
-      <div class="stat-card reveal">
-
-        <div
-          class="stat-number project-counter"
-          data-target="0"
-        >
-          0
-        </div>
-
-        <div class="stat-label">
-          Interviews completed
         </div>
 
       </div>
@@ -1698,11 +1714,13 @@ footer {
 
 const projectData = {
 
-  events: 94,
+  students: 2,
+
+  volunteerHours: 24,
+
+  peopleReached: 31,
 
   countries: 1,
-
-  interviews: 0,
 
   progress: 35
 
@@ -1712,8 +1730,6 @@ const projectData = {
 /* =====================================================
    VISITOR COUNTRY DATA
 =====================================================
-
-   IMPORTANT:
 
    Add countries here when your analytics shows that
    your website has been visited from a new country.
@@ -1986,7 +2002,7 @@ projectCounters.forEach(counter => {
 if (projectCounters[0]) {
 
   projectCounters[0].dataset.target =
-    projectData.events;
+    projectData.students;
 
 }
 
@@ -1994,7 +2010,7 @@ if (projectCounters[0]) {
 if (projectCounters[1]) {
 
   projectCounters[1].dataset.target =
-    projectData.countries;
+    projectData.volunteerHours;
 
 }
 
@@ -2002,7 +2018,15 @@ if (projectCounters[1]) {
 if (projectCounters[2]) {
 
   projectCounters[2].dataset.target =
-    projectData.interviews;
+    projectData.peopleReached;
+
+}
+
+
+if (projectCounters[3]) {
+
+  projectCounters[3].dataset.target =
+    projectData.countries;
 
 }
 
@@ -2157,7 +2181,7 @@ visitorCountries.forEach(country => {
 document.getElementById(
   "mapCountryCount"
 ).textContent =
-  visitorCountries.length;
+  projectData.countries;
 
 
 /* =====================================================
