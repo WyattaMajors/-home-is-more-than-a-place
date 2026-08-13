@@ -2,23 +2,35 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
 
   <title>Home Is More Than a Place</title>
 
   <meta
     name="description"
-    content="Home Is More Than a Place is a student-led project focused on understanding homelessness, sharing information, and creating measurable community impact."
+    content="Home Is More Than a Place is a student-led project focused on understanding homelessness, listening to people and organizations, sharing reliable information, and creating measurable community impact."
   >
+
+  <meta name="theme-color" content="#172033">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
     rel="stylesheet"
   >
 
   <style>
+
+    /* =========================================================
+       RESET
+    ========================================================= */
+
     * {
       box-sizing: border-box;
       margin: 0;
@@ -37,14 +49,23 @@
       overflow-x: hidden;
     }
 
+    body.menu-open {
+      overflow: hidden;
+    }
+
     a {
       color: inherit;
       text-decoration: none;
     }
 
-    /* =========================
+    button {
+      font: inherit;
+    }
+
+
+    /* =========================================================
        NAVIGATION
-    ========================= */
+    ========================================================= */
 
     .navbar {
       position: fixed;
@@ -52,12 +73,18 @@
       left: 0;
       width: 100%;
       z-index: 1000;
+
       padding: 18px 6%;
-      background: rgba(255, 255, 255, 0.82);
+
+      background: rgba(255, 255, 255, 0.84);
       backdrop-filter: blur(18px);
       -webkit-backdrop-filter: blur(18px);
+
       border-bottom: 1px solid rgba(20, 30, 50, 0.08);
-      transition: 0.3s ease;
+
+      transition:
+        padding 0.3s ease,
+        box-shadow 0.3s ease;
     }
 
     .navbar.scrolled {
@@ -66,17 +93,20 @@
     }
 
     .nav-container {
+      width: 100%;
       max-width: 1200px;
-      margin: auto;
+      margin: 0 auto;
+
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
     }
 
     .logo {
       font-size: 1rem;
       font-weight: 800;
-      letter-spacing: -0.03em;
+      letter-spacing: -0.035em;
+      white-space: nowrap;
     }
 
     .logo span {
@@ -87,14 +117,16 @@
       display: flex;
       align-items: center;
       gap: 28px;
+
       list-style: none;
+
       font-size: 0.92rem;
       font-weight: 600;
     }
 
     .nav-links a {
       position: relative;
-      transition: 0.25s ease;
+      transition: color 0.25s ease;
     }
 
     .nav-links a:hover {
@@ -103,13 +135,17 @@
 
     .nav-links a::after {
       content: "";
+
       position: absolute;
       left: 0;
       bottom: -6px;
+
       width: 0;
       height: 2px;
+
       background: #4777ff;
-      transition: 0.25s ease;
+
+      transition: width 0.25s ease;
     }
 
     .nav-links a:hover::after {
@@ -118,23 +154,31 @@
 
     .menu-button {
       display: none;
+
       border: none;
-      background: none;
+      background: transparent;
+
       font-size: 1.6rem;
+      line-height: 1;
+
       cursor: pointer;
     }
 
-    /* =========================
+
+    /* =========================================================
        HERO
-    ========================= */
+    ========================================================= */
 
     .hero {
       min-height: 100vh;
+
       display: flex;
       align-items: center;
-      padding: 150px 6% 90px;
+
       position: relative;
       overflow: hidden;
+
+      padding: 150px 6% 90px;
 
       background:
         radial-gradient(
@@ -148,39 +192,52 @@
           transparent 25%
         ),
         #f7f9fc;
+
+      background-position: 50% 50%;
+      transition: background-position 0.15s ease-out;
     }
 
     .hero::before,
     .hero::after {
       content: "";
+
       position: absolute;
+
       border-radius: 50%;
-      filter: blur(2px);
+
       pointer-events: none;
     }
 
     .hero::before {
       width: 350px;
       height: 350px;
-      background: rgba(71, 119, 255, 0.06);
+
       top: -120px;
       right: -100px;
+
+      background: rgba(71, 119, 255, 0.06);
+
       animation: float 7s ease-in-out infinite;
     }
 
     .hero::after {
       width: 250px;
       height: 250px;
-      background: rgba(83, 190, 164, 0.07);
+
       bottom: -80px;
       left: -80px;
+
+      background: rgba(83, 190, 164, 0.07);
+
       animation: float 9s ease-in-out infinite reverse;
     }
 
     .hero-content {
-      max-width: 1200px;
       width: 100%;
-      margin: auto;
+      max-width: 1200px;
+
+      margin: 0 auto;
+
       position: relative;
       z-index: 2;
     }
@@ -189,30 +246,44 @@
       display: inline-flex;
       align-items: center;
       gap: 8px;
+
       padding: 8px 13px;
+
       border-radius: 999px;
+
       background: rgba(71, 119, 255, 0.09);
       color: #416ce8;
+
       font-size: 0.8rem;
       font-weight: 700;
+
       margin-bottom: 22px;
+
       animation: fadeUp 0.8s ease both;
     }
 
     .eyebrow-dot {
       width: 7px;
       height: 7px;
+
       border-radius: 50%;
+
       background: #4777ff;
+
       animation: pulse 2s infinite;
     }
 
     .hero h1 {
-      max-width: 850px;
+      max-width: 900px;
+
       font-size: clamp(3rem, 8vw, 6.8rem);
+
       line-height: 0.98;
+
       letter-spacing: -0.07em;
+
       margin-bottom: 28px;
+
       animation: fadeUp 0.8s 0.1s ease both;
     }
 
@@ -221,84 +292,120 @@
     }
 
     .hero-text {
-      max-width: 680px;
-      font-size: 1.15rem;
+      max-width: 700px;
+
       color: #596579;
+
+      font-size: 1.15rem;
+
       margin-bottom: 35px;
+
       animation: fadeUp 0.8s 0.2s ease both;
     }
 
     .hero-buttons {
       display: flex;
-      gap: 14px;
       flex-wrap: wrap;
+      gap: 14px;
+
       animation: fadeUp 0.8s 0.3s ease both;
     }
+
+
+    /* =========================================================
+       BUTTONS
+    ========================================================= */
 
     .button {
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
+
+      min-height: 50px;
+
       padding: 14px 21px;
+
       border-radius: 12px;
+
       font-weight: 700;
-      transition: 0.25s ease;
+
+      transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease,
+        color 0.25s ease;
     }
 
     .button-primary {
       background: #172033;
       color: white;
-      box-shadow: 0 10px 25px rgba(23, 32, 51, 0.16);
+
+      box-shadow:
+        0 10px 25px rgba(23, 32, 51, 0.16);
     }
 
     .button-primary:hover {
       transform: translateY(-3px);
-      box-shadow: 0 15px 30px rgba(23, 32, 51, 0.22);
+
+      box-shadow:
+        0 15px 30px rgba(23, 32, 51, 0.22);
     }
 
     .button-secondary {
       background: white;
+
       border: 1px solid #dfe5ef;
     }
 
     .button-secondary:hover {
       transform: translateY(-3px);
+
       border-color: #4777ff;
       color: #4777ff;
     }
 
-    /* =========================
+
+    /* =========================================================
        GENERAL SECTIONS
-    ========================= */
+    ========================================================= */
 
     section {
       padding: 100px 6%;
     }
 
     .section-container {
+      width: 100%;
       max-width: 1200px;
-      margin: auto;
+
+      margin: 0 auto;
     }
 
     .section-heading {
-      max-width: 720px;
+      max-width: 760px;
+
       margin-bottom: 50px;
     }
 
     .section-label {
       color: #4777ff;
+
       font-size: 0.8rem;
       font-weight: 800;
+
       letter-spacing: 0.12em;
       text-transform: uppercase;
+
       margin-bottom: 12px;
     }
 
     .section-heading h2 {
       font-size: clamp(2rem, 5vw, 3.6rem);
+
       line-height: 1.05;
+
       letter-spacing: -0.05em;
+
       margin-bottom: 17px;
     }
 
@@ -307,147 +414,504 @@
       font-size: 1.05rem;
     }
 
-    /* =========================
-       WHY I'M DOING THIS
-    ========================= */
+
+    /* =========================================================
+       WHY I AM DOING THIS
+    ========================================================= */
 
     .why-section {
       background: white;
-      position: relative;
-      overflow: hidden;
     }
 
     .why-layout {
       display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 70px;
+
+      grid-template-columns:
+        minmax(0, 1.15fr)
+        minmax(300px, 0.85fr);
+
+      gap: 60px;
+
       align-items: center;
     }
 
-    .why-large-text {
-      font-size: clamp(2.3rem, 5vw, 4.5rem);
-      line-height: 1;
-      letter-spacing: -0.06em;
-      font-weight: 800;
-      position: relative;
+    .why-text h2 {
+      max-width: 700px;
+
+      font-size: clamp(2.4rem, 5vw, 4rem);
+
+      line-height: 1.02;
+
+      letter-spacing: -0.055em;
+
+      margin-bottom: 24px;
     }
 
-    .why-large-text span {
+    .why-text h2 span {
       color: #4777ff;
     }
 
-    .why-content {
+    .why-text p {
+      max-width: 680px;
+
+      color: #647084;
+
+      font-size: 1.08rem;
+
+      margin-bottom: 16px;
+    }
+
+    .why-card {
+      position: relative;
+
+      padding: 35px;
+
+      border-radius: 24px;
+
+      background:
+        linear-gradient(
+          145deg,
+          #f2f6ff,
+          #ffffff
+        );
+
+      border: 1px solid #e1e7f2;
+
+      box-shadow:
+        0 20px 50px rgba(20, 30, 50, 0.07);
+
+      overflow: hidden;
+    }
+
+    .why-card::before {
+      content: "";
+
+      position: absolute;
+
+      width: 180px;
+      height: 180px;
+
+      border-radius: 50%;
+
+      background: rgba(71, 119, 255, 0.08);
+
+      right: -70px;
+      top: -70px;
+
+      animation: float 7s ease-in-out infinite;
+    }
+
+    .why-card-icon {
+      position: relative;
+      z-index: 2;
+
+      width: 58px;
+      height: 58px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 17px;
+
+      background: #4777ff;
+      color: white;
+
+      font-size: 1.35rem;
+      font-weight: 800;
+
+      margin-bottom: 22px;
+
+      box-shadow:
+        0 12px 25px rgba(71, 119, 255, 0.25);
+    }
+
+    .why-card h3,
+    .why-card p {
+      position: relative;
+      z-index: 2;
+    }
+
+    .why-card h3 {
+      font-size: 1.35rem;
+      margin-bottom: 10px;
+    }
+
+    .why-card p {
       color: #657084;
+    }
+
+    .signature {
+      margin-top: 22px;
+
+      color: #8a94a5;
+
+      font-size: 0.82rem;
+      font-weight: 600;
+
+      letter-spacing: 0.03em;
+    }
+
+
+    /* =========================================================
+       KITSAP HOMELESSNESS STATISTIC
+    ========================================================= */
+
+    .kitsap-section {
+      position: relative;
+
+      background:
+        radial-gradient(
+          circle at 15% 20%,
+          rgba(71, 119, 255, 0.09),
+          transparent 28%
+        ),
+        #f7f9fc;
+
+      overflow: hidden;
+    }
+
+    .kitsap-main {
+      text-align: center;
+
+      max-width: 950px;
+
+      margin: 0 auto;
+    }
+
+    .kitsap-title {
+      max-width: 900px;
+
+      margin: 0 auto 22px;
+
+      font-size: clamp(2.5rem, 6vw, 5rem);
+
+      line-height: 0.98;
+
+      letter-spacing: -0.06em;
+    }
+
+    .kitsap-title span {
+      color: #4777ff;
+    }
+
+    .kitsap-description {
+      max-width: 760px;
+
+      margin: 0 auto 45px;
+
+      color: #657084;
+
       font-size: 1.05rem;
     }
 
-    .why-content p {
-      margin-bottom: 20px;
+    .kitsap-number-card {
+      position: relative;
+
+      display: inline-block;
+
+      padding: 42px 65px;
+
+      border-radius: 28px;
+
+      background: #172033;
+
+      color: white;
+
+      box-shadow:
+        0 25px 60px rgba(23, 32, 51, 0.18);
+
+      overflow: hidden;
     }
 
-    .why-highlight {
-      margin-top: 28px;
-      padding: 22px 24px;
-      border-left: 4px solid #4777ff;
-      background: #f5f7ff;
-      border-radius: 0 14px 14px 0;
-      color: #172033;
+    .kitsap-number-card::before {
+      content: "";
+
+      position: absolute;
+
+      width: 230px;
+      height: 230px;
+
+      border-radius: 50%;
+
+      right: -100px;
+      top: -120px;
+
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .kitsap-number-card::after {
+      content: "";
+
+      position: absolute;
+
+      width: 170px;
+      height: 170px;
+
+      border-radius: 50%;
+
+      left: -90px;
+      bottom: -100px;
+
+      border: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .kitsap-number {
+      position: relative;
+      z-index: 2;
+
+      font-size: clamp(4rem, 12vw, 8rem);
+
+      line-height: 0.9;
+
+      font-weight: 800;
+
+      letter-spacing: -0.08em;
+
+      margin-bottom: 15px;
+    }
+
+    .kitsap-label {
+      position: relative;
+      z-index: 2;
+
+      color: #c4ccda;
+
+      font-size: 0.95rem;
       font-weight: 600;
     }
 
-    /* =========================
-       STATS
-    ========================= */
+    .kitsap-date {
+      position: relative;
+      z-index: 2;
+
+      margin-top: 8px;
+
+      color: #8f9aad;
+
+      font-size: 0.8rem;
+    }
+
+    .kitsap-breakdown {
+      display: grid;
+
+      grid-template-columns: repeat(2, 1fr);
+
+      gap: 18px;
+
+      max-width: 700px;
+
+      margin: 35px auto 0;
+    }
+
+    .kitsap-mini-card {
+      padding: 25px;
+
+      background: white;
+
+      border: 1px solid #e2e7ef;
+
+      border-radius: 18px;
+
+      transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
+    }
+
+    .kitsap-mini-card:hover {
+      transform: translateY(-6px);
+
+      box-shadow:
+        0 18px 40px rgba(20, 30, 50, 0.08);
+    }
+
+    .kitsap-mini-number {
+      font-size: 2rem;
+
+      font-weight: 800;
+
+      letter-spacing: -0.04em;
+
+      margin-bottom: 3px;
+    }
+
+    .kitsap-mini-label {
+      color: #657084;
+
+      font-size: 0.9rem;
+    }
+
+    .data-note {
+      max-width: 820px;
+
+      margin: 30px auto 0;
+
+      padding: 18px 22px;
+
+      background: rgba(71,119,255,0.06);
+
+      border: 1px solid rgba(71,119,255,0.12);
+
+      border-radius: 14px;
+
+      color: #657084;
+
+      font-size: 0.86rem;
+
+      text-align: left;
+    }
+
+
+    /* =========================================================
+       PROJECT STATS
+    ========================================================= */
 
     .stats-section {
-      background: #172033;
-      color: white;
       position: relative;
+
+      background: #172033;
+
+      color: white;
+
       overflow: hidden;
     }
 
     .stats-section::before {
       content: "";
+
       position: absolute;
+
       width: 500px;
       height: 500px;
+
       border-radius: 50%;
-      background: rgba(71, 119, 255, 0.12);
+
       right: -250px;
       top: -250px;
-      animation: slowRotate 18s linear infinite;
+
+      background: rgba(71,119,255,0.12);
+
+      animation: float 9s ease-in-out infinite;
     }
 
     .stats-grid {
       position: relative;
       z-index: 2;
+
       display: grid;
+
       grid-template-columns: repeat(3, 1fr);
+
       gap: 20px;
     }
 
     .stat-card {
       padding: 35px 28px;
+
       border: 1px solid rgba(255,255,255,0.1);
+
       background: rgba(255,255,255,0.04);
+
       border-radius: 18px;
-      transition: 0.35s ease;
+
+      transition:
+        transform 0.35s ease,
+        background 0.35s ease,
+        border-color 0.35s ease;
     }
 
     .stat-card:hover {
       transform: translateY(-8px);
+
       background: rgba(255,255,255,0.07);
+
       border-color: rgba(255,255,255,0.2);
     }
 
     .stat-number {
       font-size: clamp(2.8rem, 6vw, 4.5rem);
+
       font-weight: 800;
+
       letter-spacing: -0.06em;
+
       line-height: 1;
+
       margin-bottom: 10px;
     }
 
     .stat-label {
       color: #b8c1d0;
+
       font-size: 0.95rem;
     }
 
-    /* =========================
-       CARDS
-    ========================= */
+    .stat-subtext {
+      color: #7f8b9f;
+
+      font-size: 0.75rem;
+
+      margin-top: 6px;
+    }
+
+
+    /* =========================================================
+       ABOUT
+    ========================================================= */
+
+    .about-section {
+      background: #f7f9fc;
+    }
 
     .cards-grid {
       display: grid;
+
       grid-template-columns: repeat(3, 1fr);
+
       gap: 22px;
     }
 
     .info-card {
-      background: white;
-      padding: 30px;
-      border-radius: 20px;
-      border: 1px solid #e5e9f0;
-      transition: 0.35s ease;
       position: relative;
+
       overflow: hidden;
+
+      padding: 30px;
+
+      background: white;
+
+      border: 1px solid #e5e9f0;
+
+      border-radius: 20px;
+
+      transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease;
     }
 
     .info-card::after {
       content: "";
+
       position: absolute;
+
       width: 90px;
       height: 90px;
+
       border-radius: 50%;
-      background: rgba(71, 119, 255, 0.06);
-      top: -30px;
+
       right: -30px;
-      transition: 0.35s ease;
+      top: -30px;
+
+      background: rgba(71,119,255,0.06);
+
+      transition: transform 0.35s ease;
     }
 
     .info-card:hover {
       transform: translateY(-8px);
-      box-shadow: 0 20px 45px rgba(20, 30, 50, 0.1);
+
+      box-shadow:
+        0 20px 45px rgba(20,30,50,0.1);
     }
 
     .info-card:hover::after {
@@ -455,85 +919,354 @@
     }
 
     .card-icon {
+      position: relative;
+      z-index: 2;
+
       width: 48px;
       height: 48px;
-      border-radius: 14px;
-      background: #eef3ff;
+
       display: flex;
       align-items: center;
       justify-content: center;
+
+      border-radius: 14px;
+
+      background: #eef3ff;
+
       color: #4777ff;
-      font-size: 0.95rem;
+
+      font-size: 0.9rem;
       font-weight: 800;
+
       margin-bottom: 20px;
-      position: relative;
-      z-index: 2;
-      transition: 0.3s ease;
     }
 
-    .info-card:hover .card-icon {
-      transform: rotate(-5deg) scale(1.08);
+    .info-card h3,
+    .info-card p {
+      position: relative;
+      z-index: 2;
     }
 
     .info-card h3 {
       font-size: 1.25rem;
+
       margin-bottom: 10px;
-      position: relative;
-      z-index: 2;
     }
 
     .info-card p {
       color: #657084;
-      position: relative;
-      z-index: 2;
     }
 
-    /* =========================
-       JOURNEY
-    ========================= */
+
+    /* =========================================================
+       VISITOR MAP
+    ========================================================= */
+
+    .map-section {
+      background: white;
+    }
+
+    .map-wrapper {
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1.35fr)
+        minmax(280px, 0.65fr);
+
+      gap: 30px;
+
+      align-items: stretch;
+    }
+
+    .map-card {
+      position: relative;
+
+      min-height: 500px;
+
+      overflow: hidden;
+
+      border-radius: 26px;
+
+      border: 1px solid #dfe5ef;
+
+      background:
+        linear-gradient(
+          160deg,
+          #edf3f9,
+          #dfe8f1
+        );
+
+      box-shadow:
+        0 20px 50px rgba(20,30,50,0.08);
+    }
+
+    /*
+      This is a simplified geographic visualization.
+      It intentionally does not claim to be a precise
+      street-level map.
+    */
+
+    .world-map {
+      position: absolute;
+
+      inset: 0;
+
+      width: 100%;
+      height: 100%;
+    }
+
+    .continent {
+      fill: #c8d4df;
+
+      stroke: #b6c4d1;
+
+      stroke-width: 1.5;
+    }
+
+    .country-dot {
+      fill: #4777ff;
+
+      stroke: white;
+
+      stroke-width: 4;
+
+      filter:
+        drop-shadow(
+          0 5px 8px rgba(71,119,255,0.35)
+        );
+
+      animation: mapPulse 2.4s infinite;
+    }
+
+    .country-dot.second {
+      animation-delay: 0.7s;
+    }
+
+    .map-label {
+      font-family: "Inter", sans-serif;
+
+      fill: #172033;
+
+      font-size: 13px;
+
+      font-weight: 700;
+    }
+
+    .map-title-overlay {
+      position: absolute;
+
+      left: 25px;
+      top: 25px;
+
+      padding: 10px 14px;
+
+      border-radius: 999px;
+
+      background: rgba(255,255,255,0.86);
+
+      backdrop-filter: blur(10px);
+
+      color: #172033;
+
+      font-size: 0.78rem;
+
+      font-weight: 700;
+
+      box-shadow:
+        0 8px 20px rgba(20,30,50,0.08);
+    }
+
+    .map-legend {
+      position: absolute;
+
+      left: 25px;
+      bottom: 25px;
+
+      display: flex;
+      align-items: center;
+      gap: 8px;
+
+      padding: 9px 13px;
+
+      border-radius: 999px;
+
+      background: rgba(255,255,255,0.88);
+
+      backdrop-filter: blur(10px);
+
+      color: #657084;
+
+      font-size: 0.76rem;
+
+      box-shadow:
+        0 8px 20px rgba(20,30,50,0.08);
+    }
+
+    .legend-dot {
+      width: 9px;
+      height: 9px;
+
+      border-radius: 50%;
+
+      background: #4777ff;
+    }
+
+    .map-info {
+      display: flex;
+
+      flex-direction: column;
+
+      justify-content: center;
+
+      padding: 35px;
+
+      border-radius: 26px;
+
+      background: #f7f9fc;
+
+      border: 1px solid #e2e7ef;
+    }
+
+    .map-info h3 {
+      font-size: 1.7rem;
+
+      line-height: 1.1;
+
+      letter-spacing: -0.04em;
+
+      margin-bottom: 14px;
+    }
+
+    .map-info p {
+      color: #657084;
+
+      margin-bottom: 25px;
+    }
+
+    .country-list {
+      display: flex;
+
+      flex-direction: column;
+
+      gap: 10px;
+    }
+
+    .country-item {
+      display: flex;
+
+      align-items: center;
+
+      gap: 12px;
+
+      padding: 13px 15px;
+
+      border-radius: 12px;
+
+      background: white;
+
+      border: 1px solid #e3e8ef;
+
+      font-size: 0.9rem;
+
+      font-weight: 600;
+    }
+
+    .country-number {
+      width: 28px;
+      height: 28px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      border-radius: 50%;
+
+      background: #eef3ff;
+
+      color: #4777ff;
+
+      font-size: 0.75rem;
+    }
+
+    .map-note {
+      margin-top: 20px;
+
+      color: #8a94a5;
+
+      font-size: 0.75rem;
+    }
+
+
+    /* =========================================================
+       PROJECT JOURNEY
+    ========================================================= */
 
     .journey {
-      background: white;
+      background: #f7f9fc;
     }
 
     .timeline {
       position: relative;
+
       max-width: 850px;
-      margin: auto;
+
+      margin: 0 auto;
     }
 
     .timeline::before {
       content: "";
+
       position: absolute;
+
       left: 18px;
       top: 0;
       bottom: 0;
+
       width: 2px;
+
       background: #e1e6ef;
     }
 
     .timeline-item {
       position: relative;
+
       padding-left: 60px;
+
       margin-bottom: 42px;
+    }
+
+    .timeline-item:last-child {
+      margin-bottom: 0;
     }
 
     .timeline-dot {
       position: absolute;
+
       left: 7px;
       top: 4px;
+
       width: 24px;
       height: 24px;
+
       border-radius: 50%;
+
       background: white;
+
       border: 6px solid #4777ff;
-      box-shadow: 0 0 0 5px rgba(71,119,255,0.08);
-      transition: 0.3s ease;
+
+      box-shadow:
+        0 0 0 5px rgba(71,119,255,0.08);
+
+      transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
     }
 
     .timeline-item:hover .timeline-dot {
-      transform: scale(1.25);
-      box-shadow: 0 0 0 10px rgba(71,119,255,0.08);
+      transform: scale(1.15);
+
+      box-shadow:
+        0 0 0 9px rgba(71,119,255,0.1);
     }
 
     .timeline-item h3 {
@@ -544,49 +1277,79 @@
       color: #657084;
     }
 
-    /* =========================
+
+    /* =========================================================
        IMPACT
-    ========================= */
+    ========================================================= */
 
     .impact-box {
-      background: linear-gradient(135deg, #4777ff, #5a88ff);
-      color: white;
-      border-radius: 28px;
-      padding: 55px;
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 40px;
-      align-items: center;
-      box-shadow: 0 25px 60px rgba(71,119,255,0.22);
       position: relative;
+
+      display: grid;
+
+      grid-template-columns:
+        minmax(0, 1.2fr)
+        minmax(250px, 0.8fr);
+
+      gap: 40px;
+
+      align-items: center;
+
+      padding: 55px;
+
       overflow: hidden;
+
+      border-radius: 28px;
+
+      background:
+        linear-gradient(
+          135deg,
+          #4777ff,
+          #5a88ff
+        );
+
+      color: white;
+
+      box-shadow:
+        0 25px 60px rgba(71,119,255,0.22);
     }
 
     .impact-box::after {
       content: "";
+
       position: absolute;
+
       width: 300px;
       height: 300px;
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 50%;
+
       right: -100px;
       top: -100px;
-      animation: slowRotate 20s linear infinite;
+
+      border-radius: 50%;
+
+      border: 1px solid rgba(255,255,255,0.12);
+
+      animation: slowSpin 18s linear infinite;
     }
 
     .impact-box h2 {
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      line-height: 1.05;
-      letter-spacing: -0.04em;
-      margin-bottom: 15px;
       position: relative;
       z-index: 2;
+
+      font-size: clamp(2rem, 4vw, 3.2rem);
+
+      line-height: 1.05;
+
+      letter-spacing: -0.04em;
+
+      margin-bottom: 15px;
     }
 
     .impact-box p {
-      color: rgba(255,255,255,0.82);
       position: relative;
       z-index: 2;
+
+      color: rgba(255,255,255,0.82);
     }
 
     .impact-progress {
@@ -596,91 +1359,126 @@
 
     .progress-header {
       display: flex;
+
       justify-content: space-between;
+
       margin-bottom: 9px;
+
       font-size: 0.9rem;
+
       font-weight: 700;
     }
 
     .progress-bar {
       width: 100%;
       height: 10px;
-      background: rgba(255,255,255,0.18);
-      border-radius: 999px;
+
       overflow: hidden;
+
+      border-radius: 999px;
+
+      background: rgba(255,255,255,0.18);
     }
 
     .progress-fill {
       width: 0;
       height: 100%;
-      background: white;
+
       border-radius: 999px;
-      transition: width 1.5s cubic-bezier(.22,1,.36,1);
+
+      background: white;
+
+      transition:
+        width 1.6s cubic-bezier(.22,1,.36,1);
     }
 
-    /* =========================
+
+    /* =========================================================
        CTA
-    ========================= */
+    ========================================================= */
 
     .cta {
       text-align: center;
+
       background: #f7f9fc;
     }
 
     .cta-inner {
-      max-width: 750px;
-      margin: auto;
+      max-width: 780px;
+
+      margin: 0 auto;
     }
 
     .cta h2 {
       font-size: clamp(2rem, 5vw, 3.5rem);
+
       line-height: 1.05;
+
       letter-spacing: -0.05em;
+
       margin-bottom: 18px;
     }
 
     .cta p {
       color: #657084;
+
       margin-bottom: 28px;
     }
 
-    /* =========================
+
+    /* =========================================================
        FOOTER
-    ========================= */
+    ========================================================= */
 
     footer {
       padding: 35px 6%;
+
       background: #111827;
+
       color: #aeb8c8;
     }
 
     .footer-container {
+      width: 100%;
       max-width: 1200px;
-      margin: auto;
+
+      margin: 0 auto;
+
       display: flex;
+
       justify-content: space-between;
+
       gap: 20px;
+
       flex-wrap: wrap;
     }
 
     .footer-title {
       color: white;
+
       font-weight: 700;
     }
 
-    .creator {
-      font-size: 0.72rem;
+    .footer-name {
       margin-top: 5px;
-      color: #737f92;
+
+      color: #7f8b9f;
+
+      font-size: 0.78rem;
+
+      letter-spacing: 0.02em;
     }
 
-    /* =========================
+
+    /* =========================================================
        SCROLL REVEAL
-    ========================= */
+    ========================================================= */
 
     .reveal {
       opacity: 0;
+
       transform: translateY(35px);
+
       transition:
         opacity 0.8s ease,
         transform 0.8s cubic-bezier(.22,1,.36,1);
@@ -688,50 +1486,82 @@
 
     .reveal.visible {
       opacity: 1;
+
       transform: translateY(0);
     }
 
-    /* =========================
-       ANIMATIONS
-    ========================= */
+
+    /* =========================================================
+       HERO ANIMATIONS
+    ========================================================= */
 
     @keyframes fadeUp {
+
       from {
         opacity: 0;
+
         transform: translateY(25px);
       }
 
       to {
         opacity: 1;
+
         transform: translateY(0);
       }
+
     }
 
     @keyframes float {
-      0%, 100% {
+
+      0%,
+      100% {
         transform: translateY(0);
       }
 
       50% {
         transform: translateY(-20px);
       }
+
     }
 
     @keyframes pulse {
+
       0% {
-        box-shadow: 0 0 0 0 rgba(71,119,255,0.5);
+        box-shadow:
+          0 0 0 0 rgba(71,119,255,0.5);
       }
 
       70% {
-        box-shadow: 0 0 0 10px rgba(71,119,255,0);
+        box-shadow:
+          0 0 0 10px rgba(71,119,255,0);
       }
 
       100% {
-        box-shadow: 0 0 0 0 rgba(71,119,255,0);
+        box-shadow:
+          0 0 0 0 rgba(71,119,255,0);
       }
+
     }
 
-    @keyframes slowRotate {
+    @keyframes mapPulse {
+
+      0%,
+      100% {
+        opacity: 1;
+
+        transform: scale(1);
+      }
+
+      50% {
+        opacity: 0.72;
+
+        transform: scale(1.12);
+      }
+
+    }
+
+    @keyframes slowSpin {
+
       from {
         transform: rotate(0deg);
       }
@@ -739,38 +1569,51 @@
       to {
         transform: rotate(360deg);
       }
+
     }
 
-    /* =========================
-       MOBILE
-    ========================= */
 
-    @media (max-width: 850px) {
+    /* =========================================================
+       ACCESSIBILITY
+    ========================================================= */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+
+    }
+
+
+    /* =========================================================
+       TABLET
+    ========================================================= */
+
+    @media (max-width: 900px) {
 
       .nav-links {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: white;
-        flex-direction: column;
-        padding: 25px;
-        gap: 20px;
-        transform: translateY(-15px);
-        opacity: 0;
-        pointer-events: none;
-        transition: 0.3s ease;
-        border-bottom: 1px solid #e5e9f0;
+        gap: 18px;
       }
 
-      .nav-links.active {
-        transform: translateY(0);
-        opacity: 1;
-        pointer-events: auto;
+      .why-layout {
+        grid-template-columns: 1fr;
       }
 
-      .menu-button {
-        display: block;
+      .map-wrapper {
+        grid-template-columns: 1fr;
+      }
+
+      .map-card {
+        min-height: 450px;
       }
 
       .stats-grid,
@@ -780,14 +1623,72 @@
 
       .impact-box {
         grid-template-columns: 1fr;
-        padding: 35px;
+
+        padding: 40px;
       }
 
-      .why-layout {
-        grid-template-columns: 1fr;
-        gap: 35px;
-      }
     }
+
+
+    /* =========================================================
+       MOBILE NAVIGATION
+    ========================================================= */
+
+    @media (max-width: 760px) {
+
+      .menu-button {
+        display: block;
+      }
+
+      .nav-links {
+
+        position: absolute;
+
+        top: 100%;
+        left: 0;
+
+        width: 100%;
+
+        flex-direction: column;
+
+        padding: 25px;
+
+        gap: 20px;
+
+        background: white;
+
+        border-bottom: 1px solid #e5e9f0;
+
+        transform: translateY(-15px);
+
+        opacity: 0;
+
+        pointer-events: none;
+
+        transition: 0.3s ease;
+
+      }
+
+      .nav-links.active {
+
+        transform: translateY(0);
+
+        opacity: 1;
+
+        pointer-events: auto;
+
+      }
+
+      .logo {
+        font-size: 0.9rem;
+      }
+
+    }
+
+
+    /* =========================================================
+       SMALL MOBILE
+    ========================================================= */
 
     @media (max-width: 600px) {
 
@@ -807,16 +1708,35 @@
         font-size: 1rem;
       }
 
+      .hero-buttons {
+        flex-direction: column;
+      }
+
       .button {
         width: 100%;
       }
 
-      .stats-grid {
-        gap: 12px;
+      .kitsap-number-card {
+        width: 100%;
+
+        padding: 38px 20px;
       }
 
-      .stat-card {
+      .kitsap-breakdown {
+        grid-template-columns: 1fr;
+      }
+
+      .why-card,
+      .map-info {
         padding: 27px;
+      }
+
+      .map-card {
+        min-height: 350px;
+      }
+
+      .impact-box {
+        padding: 32px;
       }
 
       .timeline::before {
@@ -831,50 +1751,40 @@
         left: 2px;
       }
 
-      .why-large-text {
-        font-size: 3rem;
+      .footer-container {
+        flex-direction: column;
       }
+
     }
 
-    /* =========================
-       REDUCED MOTION
-    ========================= */
-
-    @media (prefers-reduced-motion: reduce) {
-
-      html {
-        scroll-behavior: auto;
-      }
-
-      *,
-      *::before,
-      *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-      }
-    }
   </style>
 </head>
 
+
 <body>
 
-  <!-- =========================
+
+  <!-- =======================================================
        NAVIGATION
-  ========================= -->
+  ======================================================== -->
 
   <nav class="navbar" id="navbar">
 
     <div class="nav-container">
 
-      <a href="#" class="logo">
+      <a
+        href="#top"
+        class="logo"
+        aria-label="Home Is More Than a Place home"
+      >
         Home Is <span>More Than a Place</span>
       </a>
 
       <button
         class="menu-button"
         id="menuButton"
-        aria-label="Open menu"
+        type="button"
+        aria-label="Open navigation menu"
         aria-expanded="false"
       >
         ☰
@@ -883,15 +1793,19 @@
       <ul class="nav-links" id="navLinks">
 
         <li>
-          <a href="#about">About</a>
-        </li>
-
-        <li>
           <a href="#why">Why</a>
         </li>
 
         <li>
+          <a href="#kitsap">Kitsap</a>
+        </li>
+
+        <li>
           <a href="#impact">Impact</a>
+        </li>
+
+        <li>
+          <a href="#map">Reach</a>
         </li>
 
         <li>
@@ -909,451 +1823,429 @@
   </nav>
 
 
-  <!-- =========================
-       HERO
-  ========================= -->
-
-  <header class="hero">
-
-    <div class="hero-content">
-
-      <div class="eyebrow">
-
-        <span class="eyebrow-dot"></span>
-
-        Student-led community project
-
-      </div>
-
-      <h1>
-        Home is <span>more</span> than a place.
-      </h1>
-
-      <p class="hero-text">
-        A project focused on understanding homelessness, learning from
-        reliable sources and real people, and turning what I learn into
-        measurable action.
-      </p>
-
-      <div class="hero-buttons">
-
-        <a
-          href="#about"
-          class="button button-primary"
-        >
-          Explore the project
-          ↓
-        </a>
-
-        <a
-          href="#impact"
-          class="button button-secondary"
-        >
-          See the impact
-        </a>
-
-      </div>
-
-    </div>
-
-  </header>
+  <main id="top">
 
 
-  <!-- =========================
-       ABOUT
-  ========================= -->
+    <!-- =====================================================
+         HERO
+    ====================================================== -->
 
-  <section id="about">
+    <header class="hero">
 
-    <div class="section-container">
+      <div class="hero-content">
 
-      <div class="section-heading reveal">
+        <div class="eyebrow">
 
-        <div class="section-label">
-          About the project
+          <span class="eyebrow-dot"></span>
+
+          Student-led community project
+
         </div>
 
-        <h2>
-          Learning first. Acting second.
-        </h2>
+        <h1>
+          Home is <span>more</span> than a place.
+        </h1>
 
-        <p>
-          The goal isn't simply to talk about homelessness. The project is
-          designed to learn about its causes, understand different
-          perspectives, and find ways to make the work measurable.
+        <p class="hero-text">
+          A project focused on understanding homelessness,
+          learning from reliable sources and real people,
+          and turning what I learn into measurable action.
         </p>
 
-      </div>
+        <div class="hero-buttons">
 
+          <a
+            href="#why"
+            class="button button-primary"
+          >
+            Explore the project
+            ↓
+          </a>
 
-      <div class="cards-grid">
-
-        <div class="info-card reveal">
-
-          <div class="card-icon">
-            01
-          </div>
-
-          <h3>
-            Learn
-          </h3>
-
-          <p>
-            Research homelessness using reliable sources and learn about
-            the different factors that can lead to housing instability.
-          </p>
-
-        </div>
-
-
-        <div class="info-card reveal">
-
-          <div class="card-icon">
-            02
-          </div>
-
-          <h3>
-            Listen
-          </h3>
-
-          <p>
-            Hear from people and organizations that have direct experience
-            working with homelessness in the community.
-          </p>
-
-        </div>
-
-
-        <div class="info-card reveal">
-
-          <div class="card-icon">
-            03
-          </div>
-
-          <h3>
-            Measure
-          </h3>
-
-          <p>
-            Track the project's reach and progress instead of relying only
-            on how many people visit the website.
-          </p>
+          <a
+            href="#impact"
+            class="button button-secondary"
+          >
+            See the impact
+          </a>
 
         </div>
 
       </div>
 
-    </div>
-
-  </section>
+    </header>
 
 
-  <!-- =========================
-       WHY I'M DOING THIS
-  ========================= -->
+    <!-- =====================================================
+         WHY I AM DOING THIS
+    ====================================================== -->
 
-  <section
-    class="why-section"
-    id="why"
-  >
+    <section
+      class="why-section"
+      id="why"
+    >
 
-    <div class="section-container">
+      <div class="section-container">
 
-      <div class="why-layout">
+        <div class="why-layout">
 
-        <div class="reveal">
+          <div class="why-text reveal">
+
+            <div class="section-label">
+              Why I'm doing this
+            </div>
+
+            <h2>
+              I wanted to understand the issue,
+              <span>not just talk about it.</span>
+            </h2>
+
+            <p>
+              Homelessness is something I wanted to learn more about
+              in my own community. Instead of making assumptions, I
+              wanted to research the issue, listen to people who work
+              with it directly, and understand the different factors
+              that can lead to someone losing stable housing.
+            </p>
+
+            <p>
+              This project is my way of continuing to learn and
+              sharing what I find with other people. As it grows,
+              I also want to be able to show what the project is
+              actually reaching and accomplishing.
+            </p>
+
+            <div class="signature">
+              — Wyatt Majors
+            </div>
+
+          </div>
+
+
+          <div class="why-card reveal">
+
+            <div class="why-card-icon">
+              W
+            </div>
+
+            <h3>
+              The goal
+            </h3>
+
+            <p>
+              Learn first. Listen to people with experience.
+              Share reliable information. Then turn that learning
+              into measurable action.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         KITSAP COUNTY DATA
+    ====================================================== -->
+
+    <section
+      class="kitsap-section"
+      id="kitsap"
+    >
+
+      <div class="section-container">
+
+        <div class="kitsap-main reveal">
 
           <div class="section-label">
-            Why I'm doing this
+            Kitsap County
           </div>
 
-          <div class="why-large-text">
-            I wanted to understand <span>more.</span>
+          <h2 class="kitsap-title">
+            People counted as experiencing
+            <span>homelessness in Kitsap County</span>
+          </h2>
+
+          <p class="kitsap-description">
+            The 2026 Point-in-Time Count identified
+            <strong>551 people countywide</strong> on the night
+            of January 29, 2026.
+          </p>
+
+
+          <div class="kitsap-number-card">
+
+            <div
+              class="kitsap-number counter"
+              data-target="551"
+            >
+              0
+            </div>
+
+            <div class="kitsap-label">
+              people counted in the 2026 PIT Count
+            </div>
+
+            <div class="kitsap-date">
+              Kitsap County • January 29, 2026
+            </div>
+
           </div>
 
-        </div>
+
+          <div class="kitsap-breakdown">
+
+            <div class="kitsap-mini-card reveal">
+
+              <div
+                class="kitsap-mini-number counter"
+                data-target="321"
+              >
+                0
+              </div>
+
+              <div class="kitsap-mini-label">
+                sheltered
+              </div>
+
+            </div>
 
 
-        <div class="why-content reveal">
+            <div class="kitsap-mini-card reveal">
 
-          <p>
-            I started this project because homelessness is something I
-            wanted to understand better. There are a lot of assumptions
-            about why someone might experience homelessness, but I wanted
-            to look beyond those assumptions.
-          </p>
+              <div
+                class="kitsap-mini-number counter"
+                data-target="230"
+              >
+                0
+              </div>
 
-          <p>
-            Instead of just researching the topic for a school assignment,
-            I wanted to build something that could continue growing over
-            time.
-          </p>
+              <div class="kitsap-mini-label">
+                unsheltered
+              </div>
 
-          <p>
-            That means learning from reliable information, talking with
-            people and organizations involved in the issue, and sharing
-            what I learn with other people.
-          </p>
+            </div>
 
-          <div class="why-highlight">
-            This project is about learning, listening, and turning that
-            knowledge into something measurable.
+          </div>
+
+
+          <div class="data-note">
+
+            <strong>About this number:</strong>
+            The Point-in-Time Count is a one-night snapshot,
+            not a count of every person who experiences homelessness
+            throughout the year. The county notes that PIT results
+            have limitations and can be affected by factors such as
+            weather, shelter availability, volunteers, and whether
+            people participate in the survey.
+
           </div>
 
         </div>
 
       </div>
 
-    </div>
-
-  </section>
+    </section>
 
 
-  <!-- =========================
-       STATS
-  ========================= -->
+    <!-- =====================================================
+         PROJECT IMPACT / STATISTICS
+    ====================================================== -->
 
-  <section
-    class="stats-section"
-    id="impact"
-  >
+    <section
+      class="stats-section"
+      id="impact"
+    >
 
-    <div class="section-container">
+      <div class="section-container">
 
-      <div class="section-heading reveal">
+        <div class="section-heading reveal">
 
-        <div class="section-label">
-          The project so far
-        </div>
-
-        <h2>
-          Turning the project into something measurable.
-        </h2>
-
-        <p style="color:#b8c1d0;">
-          These numbers will continue changing as the project grows.
-        </p>
-
-      </div>
-
-
-      <div class="stats-grid">
-
-        <div class="stat-card reveal">
-
-          <div
-            class="stat-number counter"
-            data-target="94"
-          >
-            0
+          <div class="section-label">
+            The project so far
           </div>
-
-          <div class="stat-label">
-            Events / project interactions
-          </div>
-
-        </div>
-
-
-        <div class="stat-card reveal">
-
-          <div
-            class="stat-number counter"
-            data-target="1"
-          >
-            0
-          </div>
-
-          <div class="stat-label">
-            Countries reached
-          </div>
-
-        </div>
-
-
-        <div class="stat-card reveal">
-
-          <div
-            class="stat-number counter"
-            data-target="0"
-          >
-            0
-          </div>
-
-          <div class="stat-label">
-            Interviews completed
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================
-       JOURNEY
-  ========================= -->
-
-  <section
-    class="journey"
-    id="journey"
-  >
-
-    <div class="section-container">
-
-      <div class="section-heading reveal">
-
-        <div class="section-label">
-          Project journey
-        </div>
-
-        <h2>
-          How this project is growing.
-        </h2>
-
-        <p>
-          This timeline can be updated as new parts of the project are
-          completed.
-        </p>
-
-      </div>
-
-
-      <div class="timeline">
-
-        <div class="timeline-item reveal">
-
-          <div class="timeline-dot"></div>
-
-          <h3>
-            Research
-          </h3>
-
-          <p>
-            Learn about homelessness, its causes, and the challenges people
-            experiencing homelessness can face.
-          </p>
-
-        </div>
-
-
-        <div class="timeline-item reveal">
-
-          <div class="timeline-dot"></div>
-
-          <h3>
-            Connect with the community
-          </h3>
-
-          <p>
-            Talk with organizations and people who work directly with
-            homelessness and housing services.
-          </p>
-
-        </div>
-
-
-        <div class="timeline-item reveal">
-
-          <div class="timeline-dot"></div>
-
-          <h3>
-            Share what I learn
-          </h3>
-
-          <p>
-            Use the website to make reliable information easier for other
-            people to understand.
-          </p>
-
-        </div>
-
-
-        <div class="timeline-item reveal">
-
-          <div class="timeline-dot"></div>
-
-          <h3>
-            Measure the reach
-          </h3>
-
-          <p>
-            Continue tracking visitors, interactions, events, interviews,
-            and other meaningful parts of the project.
-          </p>
-
-        </div>
-
-
-        <div class="timeline-item reveal">
-
-          <div class="timeline-dot"></div>
-
-          <h3>
-            Keep building
-          </h3>
-
-          <p>
-            Continue adding research, conversations, community connections,
-            and measurable results as the project develops.
-          </p>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- =========================
-       IMPACT BOX
-  ========================= -->
-
-  <section>
-
-    <div class="section-container">
-
-      <div class="impact-box reveal">
-
-        <div>
 
           <h2>
-            The project is still growing.
+            Turning the project into something measurable.
+          </h2>
+
+          <p style="color:#b8c1d0;">
+            These numbers can change as the project grows.
+          </p>
+
+        </div>
+
+
+        <div class="stats-grid">
+
+
+          <!-- EVENTS -->
+
+          <div class="stat-card reveal">
+
+            <div
+              class="stat-number counter"
+              data-target="94"
+            >
+              0
+            </div>
+
+            <div class="stat-label">
+              Events / project interactions
+            </div>
+
+            <div class="stat-subtext">
+              Current project total
+            </div>
+
+          </div>
+
+
+          <!-- COUNTRIES -->
+
+          <div class="stat-card reveal">
+
+            <div
+              class="stat-number counter"
+              data-target="2"
+            >
+              0
+            </div>
+
+            <div class="stat-label">
+              Countries reached
+            </div>
+
+            <div class="stat-subtext">
+              United States + Sweden
+            </div>
+
+          </div>
+
+
+          <!-- INTERVIEWS -->
+
+          <div class="stat-card reveal">
+
+            <div
+              class="stat-number counter"
+              data-target="0"
+            >
+              0
+            </div>
+
+            <div class="stat-label">
+              Interviews completed
+            </div>
+
+            <div class="stat-subtext">
+              More will be added as interviews happen
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         ABOUT / LEARN LISTEN MEASURE
+    ====================================================== -->
+
+    <section
+      class="about-section"
+      id="about"
+    >
+
+      <div class="section-container">
+
+        <div class="section-heading reveal">
+
+          <div class="section-label">
+            About the project
+          </div>
+
+          <h2>
+            Learning first. Acting second.
           </h2>
 
           <p>
-            Every event, conversation, interview, and visitor gives the
-            project another way to measure how far it reaches.
+            The goal isn't simply to talk about homelessness.
+            The project is designed to learn about its causes,
+            understand different perspectives, and find ways
+            to make the work measurable.
           </p>
 
         </div>
 
 
-        <div class="impact-progress">
+        <div class="cards-grid">
 
-          <div class="progress-header">
 
-            <span>
-              Project progress
-            </span>
+          <!-- LEARN -->
 
-            <span id="progressPercent">
-              0%
-            </span>
+          <div class="info-card reveal">
+
+            <div class="card-icon">
+              01
+            </div>
+
+            <h3>
+              Learn
+            </h3>
+
+            <p>
+              Research homelessness using reliable sources and
+              learn about the different factors that can lead
+              to housing instability.
+            </p>
 
           </div>
 
-          <div class="progress-bar">
 
-            <div
-              class="progress-fill"
-              id="progressFill"
-            ></div>
+          <!-- LISTEN -->
+
+          <div class="info-card reveal">
+
+            <div class="card-icon">
+              02
+            </div>
+
+            <h3>
+              Listen
+            </h3>
+
+            <p>
+              Hear from people and organizations that have direct
+              experience working with homelessness and housing
+              services in the community.
+            </p>
+
+          </div>
+
+
+          <!-- MEASURE -->
+
+          <div class="info-card reveal">
+
+            <div class="card-icon">
+              03
+            </div>
+
+            <h3>
+              Measure
+            </h3>
+
+            <p>
+              Track the project's reach and progress instead of
+              relying only on how many people visit the website.
+            </p>
 
           </div>
 
@@ -1361,48 +2253,491 @@
 
       </div>
 
-    </div>
-
-  </section>
+    </section>
 
 
-  <!-- =========================
-       CTA
-  ========================= -->
+    <!-- =====================================================
+         VISITOR REACH MAP
+    ====================================================== -->
 
-  <section class="cta">
+    <section
+      class="map-section"
+      id="map"
+    >
 
-    <div class="cta-inner reveal">
+      <div class="section-container">
 
-      <div class="section-label">
-        Keep learning
+        <div class="section-heading reveal">
+
+          <div class="section-label">
+            Project reach
+          </div>
+
+          <h2>
+            The project has reached beyond Kitsap.
+          </h2>
+
+          <p>
+            This map shows locations where the project has
+            confirmed visitors so far. As the website reaches
+            more places, this section can grow with it.
+          </p>
+
+        </div>
+
+
+        <div class="map-wrapper">
+
+
+          <!-- MAP -->
+
+          <div class="map-card reveal">
+
+            <div class="map-title-overlay">
+              Confirmed project reach
+            </div>
+
+
+            <!--
+              Simplified world map.
+
+              The blue dots represent locations that have
+              been confirmed for this project.
+
+              Current confirmed countries:
+              United States
+              Sweden
+            -->
+
+            <svg
+              class="world-map"
+              viewBox="0 0 1000 500"
+              role="img"
+              aria-label="Simplified map showing project reach in the United States and Sweden"
+            >
+
+              <!-- North America -->
+
+              <path
+                class="continent"
+                d="
+                  M105 105
+                  L145 82
+                  L205 92
+                  L230 122
+                  L215 153
+                  L180 165
+                  L170 195
+                  L125 182
+                  L108 150
+                  L85 130
+                  Z
+                "
+              />
+
+              <!-- South America -->
+
+              <path
+                class="continent"
+                d="
+                  M270 245
+                  L310 265
+                  L325 310
+                  L315 355
+                  L285 410
+                  L260 375
+                  L268 330
+                  L250 290
+                  Z
+                "
+              />
+
+              <!-- Europe -->
+
+              <path
+                class="continent"
+                d="
+                  M480 120
+                  L510 100
+                  L545 108
+                  L565 130
+                  L548 150
+                  L510 148
+                  L490 135
+                  Z
+                "
+              />
+
+              <!-- Asia -->
+
+              <path
+                class="continent"
+                d="
+                  M565 115
+                  L625 95
+                  L700 105
+                  L775 125
+                  L825 160
+                  L790 195
+                  L720 185
+                  L670 165
+                  L610 170
+                  L575 145
+                  Z
+                "
+              />
+
+              <!-- Africa -->
+
+              <path
+                class="continent"
+                d="
+                  M505 190
+                  L555 185
+                  L585 220
+                  L575 275
+                  L540 330
+                  L505 300
+                  L490 245
+                  Z
+                "
+              />
+
+              <!-- Australia -->
+
+              <path
+                class="continent"
+                d="
+                  M770 330
+                  L825 315
+                  L875 340
+                  L865 375
+                  L810 390
+                  L775 370
+                  Z
+                "
+              />
+
+
+              <!-- UNITED STATES -->
+
+              <circle
+                class="country-dot"
+                cx="175"
+                cy="145"
+                r="9"
+              />
+
+              <text
+                class="map-label"
+                x="190"
+                y="140"
+              >
+                United States
+              </text>
+
+
+              <!-- SWEDEN -->
+
+              <circle
+                class="country-dot second"
+                cx="518"
+                cy="103"
+                r="8"
+              />
+
+              <text
+                class="map-label"
+                x="530"
+                y="100"
+              >
+                Sweden
+              </text>
+
+            </svg>
+
+
+            <div class="map-legend">
+
+              <span class="legend-dot"></span>
+
+              Confirmed visitor location
+
+            </div>
+
+          </div>
+
+
+          <!-- MAP INFORMATION -->
+
+          <div class="map-info reveal">
+
+            <div class="section-label">
+              Current reach
+            </div>
+
+            <h3>
+              From Kitsap County to other parts of the world.
+            </h3>
+
+            <p>
+              Even a small project can reach people in places
+              you might not expect. The locations below are the
+              countries currently confirmed for this project.
+            </p>
+
+
+            <div class="country-list">
+
+
+              <div class="country-item">
+
+                <span class="country-number">
+                  01
+                </span>
+
+                United States
+
+              </div>
+
+
+              <div class="country-item">
+
+                <span class="country-number">
+                  02
+                </span>
+
+                Sweden
+
+              </div>
+
+            </div>
+
+
+            <p class="map-note">
+              Visitor locations are based on available website
+              analytics and should be treated as approximate.
+            </p>
+
+          </div>
+
+        </div>
+
       </div>
 
-      <h2>
-        A person's housing situation doesn't define their worth.
-      </h2>
-
-      <p>
-        Learn more about the project, explore the sources behind it, and
-        follow along as the project continues to grow.
-      </p>
-
-      <a
-        href="sources.html"
-        class="button button-primary"
-      >
-        View sources
-        →
-      </a>
-
-    </div>
-
-  </section>
+    </section>
 
 
-  <!-- =========================
+    <!-- =====================================================
+         PROJECT JOURNEY
+    ====================================================== -->
+
+    <section
+      class="journey"
+      id="journey"
+    >
+
+      <div class="section-container">
+
+        <div class="section-heading reveal">
+
+          <div class="section-label">
+            Project journey
+          </div>
+
+          <h2>
+            How this project is growing.
+          </h2>
+
+          <p>
+            This timeline can continue to change as new parts
+            of the project are completed.
+          </p>
+
+        </div>
+
+
+        <div class="timeline">
+
+
+          <!-- RESEARCH -->
+
+          <div class="timeline-item reveal">
+
+            <div class="timeline-dot"></div>
+
+            <h3>
+              Research
+            </h3>
+
+            <p>
+              Learn about homelessness, its causes, and the
+              challenges people experiencing homelessness can face.
+            </p>
+
+          </div>
+
+
+          <!-- COMMUNITY -->
+
+          <div class="timeline-item reveal">
+
+            <div class="timeline-dot"></div>
+
+            <h3>
+              Connect with the community
+            </h3>
+
+            <p>
+              Talk with organizations and people who work directly
+              with homelessness and housing services.
+            </p>
+
+          </div>
+
+
+          <!-- SHARE -->
+
+          <div class="timeline-item reveal">
+
+            <div class="timeline-dot"></div>
+
+            <h3>
+              Share what I learn
+            </h3>
+
+            <p>
+              Use the website to make reliable information easier
+              for other people to understand.
+            </p>
+
+          </div>
+
+
+          <!-- MEASURE -->
+
+          <div class="timeline-item reveal">
+
+            <div class="timeline-dot"></div>
+
+            <h3>
+              Measure the reach
+            </h3>
+
+            <p>
+              Continue tracking visitors, interactions, events,
+              interviews, and other meaningful parts of the project.
+            </p>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         PROJECT PROGRESS
+    ====================================================== -->
+
+    <section>
+
+      <div class="section-container">
+
+        <div class="impact-box reveal">
+
+
+          <div>
+
+            <h2>
+              The project is still growing.
+            </h2>
+
+            <p>
+              Every event, conversation, interview, and visitor
+              gives the project another way to measure how far
+              it reaches.
+            </p>
+
+          </div>
+
+
+          <div class="impact-progress">
+
+            <div class="progress-header">
+
+              <span>
+                Project progress
+              </span>
+
+              <span id="progressPercent">
+                0%
+              </span>
+
+            </div>
+
+            <div
+              class="progress-bar"
+              aria-label="Project progress"
+            >
+
+              <div
+                class="progress-fill"
+                id="progressFill"
+              ></div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         FINAL CTA
+    ====================================================== -->
+
+    <section class="cta">
+
+      <div class="cta-inner reveal">
+
+        <div class="section-label">
+          Keep learning
+        </div>
+
+        <h2>
+          A person's housing situation doesn't define their worth.
+        </h2>
+
+        <p>
+          Learn more about the project, explore the sources behind
+          it, and follow along as the project continues to grow.
+        </p>
+
+        <a
+          href="sources.html"
+          class="button button-primary"
+        >
+          View sources
+          →
+        </a>
+
+      </div>
+
+    </section>
+
+  </main>
+
+
+  <!-- =======================================================
        FOOTER
-  ========================= -->
+  ======================================================== -->
 
   <footer>
 
@@ -1418,12 +2753,11 @@
           Student-led project
         </div>
 
-        <div class="creator">
-          Created by Wyatt Majors
+        <div class="footer-name">
+          Wyatt Majors
         </div>
 
       </div>
-
 
       <div>
         © 2026
@@ -1434,25 +2768,24 @@
   </footer>
 
 
-  <!-- =========================
+  <!-- =======================================================
        JAVASCRIPT
-  ========================= -->
+  ======================================================== -->
 
   <script>
 
-    /*
-      ==========================================
-      PROJECT DATA
-      ==========================================
 
-      Change these numbers as the project grows.
-    */
+    /* =========================================================
+       PROJECT DATA
+       
+       THIS IS THE MAIN PLACE TO UPDATE YOUR NUMBERS.
+    ========================================================= */
 
     const projectData = {
 
       events: 94,
 
-      countries: 1,
+      countries: 2,
 
       interviews: 0,
 
@@ -1461,11 +2794,9 @@
     };
 
 
-    /*
-      ==========================================
-      MOBILE MENU
-      ==========================================
-    */
+    /* =========================================================
+       MOBILE MENU
+    ========================================================= */
 
     const menuButton =
       document.getElementById("menuButton");
@@ -1476,52 +2807,63 @@
 
     menuButton.addEventListener("click", () => {
 
-      navLinks.classList.toggle("active");
-
       const isOpen =
-        navLinks.classList.contains("active");
+        navLinks.classList.toggle("active");
 
-      menuButton.setAttribute(
-        "aria-expanded",
+      document.body.classList.toggle(
+        "menu-open",
         isOpen
       );
 
-      menuButton.textContent =
-        isOpen ? "✕" : "☰";
+      menuButton.setAttribute(
+        "aria-expanded",
+        String(isOpen)
+      );
+
+      menuButton.setAttribute(
+        "aria-label",
+        isOpen
+          ? "Close navigation menu"
+          : "Open navigation menu"
+      );
 
     });
 
 
-    document.querySelectorAll(".nav-links a")
+    document
+      .querySelectorAll(".nav-links a")
       .forEach(link => {
 
         link.addEventListener("click", () => {
 
           navLinks.classList.remove("active");
 
+          document.body.classList.remove("menu-open");
+
           menuButton.setAttribute(
             "aria-expanded",
             "false"
           );
 
-          menuButton.textContent = "☰";
+          menuButton.setAttribute(
+            "aria-label",
+            "Open navigation menu"
+          );
 
         });
 
       });
 
 
-    /*
-      ==========================================
-      NAVBAR SCROLL EFFECT
-      ==========================================
-    */
+    /* =========================================================
+       NAVBAR SCROLL EFFECT
+    ========================================================= */
 
     const navbar =
       document.getElementById("navbar");
 
 
-    window.addEventListener("scroll", () => {
+    function updateNavbar() {
 
       if (window.scrollY > 40) {
 
@@ -1533,14 +2875,22 @@
 
       }
 
-    });
+    }
 
 
-    /*
-      ==========================================
-      SCROLL REVEAL ANIMATION
-      ==========================================
-    */
+    window.addEventListener(
+      "scroll",
+      updateNavbar,
+      { passive: true }
+    );
+
+
+    updateNavbar();
+
+
+    /* =========================================================
+       SCROLL REVEAL
+    ========================================================= */
 
     const revealElements =
       document.querySelectorAll(".reveal");
@@ -1566,7 +2916,7 @@
         },
 
         {
-          threshold: 0.15
+          threshold: 0.14
         }
 
       );
@@ -1579,14 +2929,11 @@
     });
 
 
-    /*
-      ==========================================
-      NUMBER COUNTER ANIMATION
-      ==========================================
-
-      The numbers start at 0 and smoothly count
-      up to the real project numbers.
-    */
+    /* =========================================================
+       COUNTER ANIMATION
+       
+       Numbers start at 0 and smoothly count upward.
+    ========================================================= */
 
     const counters =
       document.querySelectorAll(".counter");
@@ -1596,6 +2943,10 @@
 
       const target =
         Number(element.dataset.target);
+
+      if (!Number.isFinite(target)) {
+        return;
+      }
 
       const duration = 1600;
 
@@ -1609,13 +2960,24 @@
           currentTime - startTime;
 
         const progress =
-          Math.min(elapsed / duration, 1);
+          Math.min(
+            elapsed / duration,
+            1
+          );
+
 
         const eased =
-          1 - Math.pow(1 - progress, 3);
+          1 - Math.pow(
+            1 - progress,
+            3
+          );
+
 
         const current =
-          Math.floor(eased * target);
+          Math.floor(
+            eased * target
+          );
+
 
         element.textContent =
           current.toLocaleString();
@@ -1640,11 +3002,11 @@
     }
 
 
-    /*
-      ==========================================
-      COUNTER OBSERVER
-      ==========================================
-    */
+    /* =========================================================
+       COUNTER OBSERVER
+       
+       Each counter only animates once when visible.
+    ========================================================= */
 
     const counterObserver =
       new IntersectionObserver(
@@ -1655,13 +3017,13 @@
 
             if (entry.isIntersecting) {
 
-              counters.forEach(counter => {
+              animateCounter(
+                entry.target
+              );
 
-                animateCounter(counter);
-
-              });
-
-              observer.disconnect();
+              observer.unobserve(
+                entry.target
+              );
 
             }
 
@@ -1670,30 +3032,68 @@
         },
 
         {
-          threshold: 0.4
+          threshold: 0.35
         }
 
       );
 
 
-    if (counters.length > 0) {
+    counters.forEach(counter => {
 
-      counterObserver.observe(counters[0]);
+      counterObserver.observe(counter);
+
+    });
+
+
+    /* =========================================================
+       PROJECT DATA -> WEBSITE
+       
+       Keeps the main project numbers controlled from one place.
+    ========================================================= */
+
+    const projectCounters =
+      document.querySelectorAll(
+        "#impact .counter"
+      );
+
+
+    if (projectCounters[0]) {
+
+      projectCounters[0].dataset.target =
+        projectData.events;
 
     }
 
 
-    /*
-      ==========================================
-      PROJECT PROGRESS ANIMATION
-      ==========================================
-    */
+    if (projectCounters[1]) {
+
+      projectCounters[1].dataset.target =
+        projectData.countries;
+
+    }
+
+
+    if (projectCounters[2]) {
+
+      projectCounters[2].dataset.target =
+        projectData.interviews;
+
+    }
+
+
+    /* =========================================================
+       PROJECT PROGRESS
+    ========================================================= */
 
     const progressFill =
-      document.getElementById("progressFill");
+      document.getElementById(
+        "progressFill"
+      );
 
     const progressPercent =
-      document.getElementById("progressPercent");
+      document.getElementById(
+        "progressPercent"
+      );
 
 
     const progressObserver =
@@ -1703,40 +3103,84 @@
 
           entries.forEach(entry => {
 
-            if (entry.isIntersecting) {
-
-              const percentage =
-                projectData.progress;
-
-
-              progressFill.style.width =
-                percentage + "%";
+            if (!entry.isIntersecting) {
+              return;
+            }
 
 
-              let current = 0;
+            const percentage =
+              Math.max(
+                0,
+                Math.min(
+                  100,
+                  Number(projectData.progress)
+                )
+              );
 
 
-              const interval =
-                setInterval(() => {
-
-                  current += 1;
-
-                  progressPercent.textContent =
-                    current + "%";
+            progressFill.style.width =
+              percentage + "%";
 
 
-                  if (current >= percentage) {
+            const duration = 1200;
 
-                    clearInterval(interval);
-
-                  }
-
-                }, 20);
+            const startTime =
+              performance.now();
 
 
-              progressObserver.disconnect();
+            function updateProgress(
+              currentTime
+            ) {
+
+              const elapsed =
+                currentTime - startTime;
+
+              const progress =
+                Math.min(
+                  elapsed / duration,
+                  1
+                );
+
+
+              const eased =
+                1 - Math.pow(
+                  1 - progress,
+                  3
+                );
+
+
+              const current =
+                Math.round(
+                  eased * percentage
+                );
+
+
+              progressPercent.textContent =
+                current + "%";
+
+
+              if (progress < 1) {
+
+                requestAnimationFrame(
+                  updateProgress
+                );
+
+              } else {
+
+                progressPercent.textContent =
+                  percentage + "%";
+
+              }
 
             }
+
+
+            requestAnimationFrame(
+              updateProgress
+            );
+
+
+            progressObserver.disconnect();
 
           });
 
@@ -1749,105 +3193,86 @@
       );
 
 
-    progressObserver.observe(progressFill);
+    progressObserver.observe(
+      progressFill
+    );
 
 
-    /*
-      ==========================================
-      AUTOMATICALLY APPLY PROJECT DATA
-      ==========================================
-    */
-
-    const counterElements =
-      document.querySelectorAll(".counter");
-
-
-    if (counterElements[0]) {
-
-      counterElements[0].dataset.target =
-        projectData.events;
-
-    }
-
-
-    if (counterElements[1]) {
-
-      counterElements[1].dataset.target =
-        projectData.countries;
-
-    }
-
-
-    if (counterElements[2]) {
-
-      counterElements[2].dataset.target =
-        projectData.interviews;
-
-    }
-
-
-    /*
-      ==========================================
-      SUBTLE HERO PARALLAX
-      ==========================================
-
-      Only works on larger screens.
-    */
+    /* =========================================================
+       HERO MOUSE PARALLAX
+       
+       Desktop only.
+    ========================================================= */
 
     const hero =
       document.querySelector(".hero");
 
 
-    window.addEventListener("mousemove", event => {
-
-      if (window.innerWidth <= 850) return;
-
-
-      const x =
-        (event.clientX / window.innerWidth - 0.5) * 10;
-
-      const y =
-        (event.clientY / window.innerHeight - 0.5) * 10;
+    const reduceMotion =
+      window.matchMedia(
+        "(prefers-reduced-motion: reduce)"
+      ).matches;
 
 
-      hero.style.backgroundPosition =
-        `${50 + x}% ${50 + y}%`;
+    if (!reduceMotion) {
 
-    });
+      window.addEventListener(
+        "mousemove",
+        event => {
 
-
-    /*
-      ==========================================
-      CARD STAGGER EFFECT
-      ==========================================
-
-      Gives cards a small delay when they appear.
-    */
-
-    document
-      .querySelectorAll(".cards-grid .reveal")
-      .forEach((card, index) => {
-
-        card.style.transitionDelay =
-          `${index * 0.08}s`;
-
-      });
+          if (window.innerWidth <= 850) {
+            return;
+          }
 
 
-    /*
-      ==========================================
-      TIMELINE STAGGER EFFECT
-      ==========================================
-    */
+          const x =
+            (
+              event.clientX /
+              window.innerWidth -
+              0.5
+            ) * 8;
 
-    document
-      .querySelectorAll(".timeline-item")
-      .forEach((item, index) => {
 
-        item.style.transitionDelay =
-          `${index * 0.08}s`;
+          const y =
+            (
+              event.clientY /
+              window.innerHeight -
+              0.5
+            ) * 8;
 
-      });
+
+          hero.style.backgroundPosition =
+            `${50 + x}% ${50 + y}%`;
+
+        },
+        { passive: true }
+      );
+
+    }
+
+
+    /* =========================================================
+       SMOOTH BACK-TO-TOP BEHAVIOR
+    ========================================================= */
+
+    const logo =
+      document.querySelector(".logo");
+
+
+    logo.addEventListener(
+      "click",
+      event => {
+
+        event.preventDefault();
+
+        window.scrollTo({
+          top: 0,
+          behavior: "smooth"
+        });
+
+      }
+    );
+
 
   </script>
 
