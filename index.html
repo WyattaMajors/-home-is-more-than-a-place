@@ -146,7 +146,6 @@
       content: "";
       position: absolute;
       border-radius: 50%;
-      filter: blur(2px);
       pointer-events: none;
     }
 
@@ -260,7 +259,7 @@
     }
 
     /* =========================
-       SECTION
+       GENERAL SECTIONS
     ========================= */
 
     section {
@@ -299,6 +298,84 @@
     }
 
     /* =========================
+       WHY I'M DOING THIS
+    ========================= */
+
+    .why-section {
+      background: white;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .why-text h2 {
+      font-size: clamp(2.3rem, 5vw, 4rem);
+      line-height: 1.03;
+      letter-spacing: -0.055em;
+      margin-bottom: 22px;
+    }
+
+    .why-text h2 span {
+      color: #4777ff;
+    }
+
+    .why-text p {
+      color: #657084;
+      font-size: 1.05rem;
+      margin-bottom: 18px;
+    }
+
+    .why-highlight {
+      background: #f7f9fc;
+      border: 1px solid #e5e9f0;
+      border-radius: 20px;
+      padding: 30px;
+      position: relative;
+      overflow: hidden;
+      transition: 0.35s ease;
+    }
+
+    .why-highlight:hover {
+      transform: translateY(-7px);
+      box-shadow: 0 20px 45px rgba(20, 30, 50, 0.09);
+    }
+
+    .why-highlight::before {
+      content: "";
+      position: absolute;
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: rgba(71, 119, 255, 0.07);
+      right: -50px;
+      top: -50px;
+    }
+
+    .quote-mark {
+      font-size: 4rem;
+      line-height: 0.8;
+      color: #4777ff;
+      font-weight: 800;
+      position: relative;
+      z-index: 2;
+      margin-bottom: 18px;
+    }
+
+    .why-highlight p {
+      font-size: 1.15rem;
+      font-weight: 600;
+      line-height: 1.55;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* =========================
        STATS
     ========================= */
 
@@ -318,6 +395,7 @@
       background: rgba(71, 119, 255, 0.12);
       right: -250px;
       top: -250px;
+      animation: slowSpin 18s linear infinite;
     }
 
     .stats-grid {
@@ -334,6 +412,20 @@
       background: rgba(255,255,255,0.04);
       border-radius: 18px;
       transition: 0.35s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-card::after {
+      content: "";
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: rgba(71,119,255,0.08);
+      right: -60px;
+      bottom: -60px;
+      transition: 0.4s ease;
     }
 
     .stat-card:hover {
@@ -342,17 +434,25 @@
       border-color: rgba(255,255,255,0.2);
     }
 
+    .stat-card:hover::after {
+      transform: scale(1.8);
+    }
+
     .stat-number {
       font-size: clamp(2.8rem, 6vw, 4.5rem);
       font-weight: 800;
       letter-spacing: -0.06em;
       line-height: 1;
       margin-bottom: 10px;
+      position: relative;
+      z-index: 2;
     }
 
     .stat-label {
       color: #b8c1d0;
       font-size: 0.95rem;
+      position: relative;
+      z-index: 2;
     }
 
     /* =========================
@@ -405,10 +505,16 @@
       align-items: center;
       justify-content: center;
       color: #4777ff;
-      font-size: 1.3rem;
+      font-size: 0.85rem;
+      font-weight: 800;
       margin-bottom: 20px;
       position: relative;
       z-index: 2;
+      transition: 0.35s ease;
+    }
+
+    .info-card:hover .card-icon {
+      transform: rotate(-5deg) scale(1.08);
     }
 
     .info-card h3 {
@@ -425,7 +531,7 @@
     }
 
     /* =========================
-       PROJECT JOURNEY
+       JOURNEY
     ========================= */
 
     .journey {
@@ -464,6 +570,14 @@
       background: white;
       border: 6px solid #4777ff;
       box-shadow: 0 0 0 5px rgba(71,119,255,0.08);
+      transition: 0.35s ease;
+    }
+
+    .timeline-item:hover .timeline-dot {
+      transform: scale(1.25);
+      box-shadow:
+        0 0 0 8px rgba(71,119,255,0.1),
+        0 0 25px rgba(71,119,255,0.25);
     }
 
     .timeline-item h3 {
@@ -490,6 +604,18 @@
       box-shadow: 0 25px 60px rgba(71,119,255,0.22);
       position: relative;
       overflow: hidden;
+    }
+
+    .impact-box::before {
+      content: "";
+      position: absolute;
+      width: 500px;
+      height: 500px;
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 50%;
+      right: -250px;
+      top: -250px;
+      animation: pulseRing 5s ease-in-out infinite;
     }
 
     .impact-box::after {
@@ -598,7 +724,7 @@
     }
 
     /* =========================
-       SCROLL ANIMATION
+       SCROLL REVEAL
     ========================= */
 
     .reveal {
@@ -612,6 +738,18 @@
     .reveal.visible {
       opacity: 1;
       transform: translateY(0);
+    }
+
+    .reveal-delay-1 {
+      transition-delay: 0.1s;
+    }
+
+    .reveal-delay-2 {
+      transition-delay: 0.2s;
+    }
+
+    .reveal-delay-3 {
+      transition-delay: 0.3s;
     }
 
     /* =========================
@@ -654,6 +792,28 @@
       }
     }
 
+    @keyframes pulseRing {
+      0%, 100% {
+        transform: scale(0.95);
+        opacity: 0.5;
+      }
+
+      50% {
+        transform: scale(1.05);
+        opacity: 1;
+      }
+    }
+
+    @keyframes slowSpin {
+      from {
+        transform: rotate(0deg);
+      }
+
+      to {
+        transform: rotate(360deg);
+      }
+    }
+
     /* =========================
        MOBILE
     ========================= */
@@ -687,8 +847,13 @@
       }
 
       .stats-grid,
-      .cards-grid {
+      .cards-grid,
+      .why-grid {
         grid-template-columns: 1fr;
+      }
+
+      .why-grid {
+        gap: 35px;
       }
 
       .impact-box {
@@ -738,6 +903,29 @@
       .timeline-dot {
         left: 2px;
       }
+
+      .why-highlight {
+        padding: 25px;
+      }
+    }
+
+    /* =========================
+       REDUCED MOTION
+    ========================= */
+
+    @media (prefers-reduced-motion: reduce) {
+
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
     }
   </style>
 </head>
@@ -755,12 +943,18 @@
         Home Is <span>More Than a Place</span>
       </a>
 
-      <button class="menu-button" id="menuButton" aria-label="Open menu">
+      <button
+        class="menu-button"
+        id="menuButton"
+        aria-label="Open menu"
+        aria-expanded="false"
+      >
         ☰
       </button>
 
       <ul class="nav-links" id="navLinks">
         <li><a href="#about">About</a></li>
+        <li><a href="#why">Why I'm Doing This</a></li>
         <li><a href="#impact">Impact</a></li>
         <li><a href="#journey">Journey</a></li>
         <li><a href="sources.html">Sources</a></li>
@@ -812,6 +1006,60 @@
 
 
   <!-- =========================
+       WHY I'M DOING THIS
+  ========================= -->
+
+  <section class="why-section" id="why">
+
+    <div class="section-container">
+
+      <div class="why-grid">
+
+        <div class="why-text reveal">
+
+          <div class="section-label">
+            Why I'm doing this
+          </div>
+
+          <h2>
+            I wanted to understand <span>more than the statistics.</span>
+          </h2>
+
+          <p>
+            Homelessness is something I wanted to learn about beyond
+            numbers and headlines. I wanted to understand some of the
+            different reasons people can experience homelessness and
+            hear from people who actually work with the issue.
+          </p>
+
+          <p>
+            This project is my way of learning, asking questions, and
+            sharing what I find with other people. I also wanted to make
+            the project measurable so I can see how it grows over time.
+          </p>
+
+        </div>
+
+        <div class="why-highlight reveal reveal-delay-2">
+
+          <div class="quote-mark">“</div>
+
+          <p>
+            A person's housing situation doesn't define who they are.
+            Understanding homelessness starts with seeing the person,
+            not just the situation.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
        STATS
   ========================= -->
 
@@ -820,7 +1068,10 @@
     <div class="section-container">
 
       <div class="section-heading reveal">
-        <div class="section-label">The project so far</div>
+
+        <div class="section-label">
+          The project so far
+        </div>
 
         <h2>
           Turning the project into something measurable.
@@ -829,12 +1080,14 @@
         <p style="color:#b8c1d0;">
           These numbers will continue changing as the project grows.
         </p>
+
       </div>
 
 
       <div class="stats-grid">
 
-        <div class="stat-card reveal">
+        <div class="stat-card reveal reveal-delay-1">
+
           <div
             class="stat-number counter"
             data-target="94"
@@ -845,13 +1098,15 @@
           <div class="stat-label">
             Events / project interactions
           </div>
+
         </div>
 
 
-        <div class="stat-card reveal">
+        <div class="stat-card reveal reveal-delay-2">
+
           <div
             class="stat-number counter"
-            data-target="1"
+            data-target="2"
           >
             0
           </div>
@@ -859,10 +1114,12 @@
           <div class="stat-label">
             Countries reached
           </div>
+
         </div>
 
 
-        <div class="stat-card reveal">
+        <div class="stat-card reveal reveal-delay-3">
+
           <div
             class="stat-number counter"
             data-target="0"
@@ -873,6 +1130,7 @@
           <div class="stat-label">
             Interviews completed
           </div>
+
         </div>
 
       </div>
@@ -911,7 +1169,7 @@
 
       <div class="cards-grid">
 
-        <div class="info-card reveal">
+        <div class="info-card reveal reveal-delay-1">
 
           <div class="card-icon">
             01
@@ -927,7 +1185,7 @@
         </div>
 
 
-        <div class="info-card reveal">
+        <div class="info-card reveal reveal-delay-2">
 
           <div class="card-icon">
             02
@@ -943,7 +1201,7 @@
         </div>
 
 
-        <div class="info-card reveal">
+        <div class="info-card reveal reveal-delay-3">
 
           <div class="card-icon">
             03
@@ -1154,6 +1412,7 @@
     <div class="footer-container">
 
       <div>
+
         <div class="footer-title">
           Home Is More Than a Place
         </div>
@@ -1161,6 +1420,7 @@
         <div>
           Student-led project
         </div>
+
       </div>
 
       <div>
@@ -1183,21 +1443,15 @@
       PROJECT NUMBERS
       ==========================================
 
-      Change the numbers here whenever your
-      project grows.
-
-      Example:
-
-      events: 120
-
-      interviews: 4
+      Change these numbers whenever the project
+      grows.
     */
 
     const projectData = {
 
       events: 94,
 
-      countries: 1,
+      countries: 2,
 
       interviews: 0,
 
@@ -1221,7 +1475,16 @@
 
     menuButton.addEventListener("click", () => {
 
-      navLinks.classList.toggle("active");
+      const isOpen =
+        navLinks.classList.toggle("active");
+
+      menuButton.setAttribute(
+        "aria-expanded",
+        isOpen
+      );
+
+      menuButton.textContent =
+        isOpen ? "✕" : "☰";
 
     });
 
@@ -1232,6 +1495,13 @@
         link.addEventListener("click", () => {
 
           navLinks.classList.remove("active");
+
+          menuButton.setAttribute(
+            "aria-expanded",
+            "false"
+          );
+
+          menuButton.textContent = "☰";
 
         });
 
@@ -1311,15 +1581,41 @@
       NUMBER COUNTER ANIMATION
       ==========================================
 
-      This is the effect you were talking about
-      from the Helpline House website.
-
-      The number starts at 0 and smoothly counts
-      up to the real number.
+      Numbers start at 0 and smoothly count
+      upward when the stats section appears.
     */
 
     const counters =
       document.querySelectorAll(".counter");
+
+
+    /*
+      Apply the project numbers before the
+      counter animation begins.
+    */
+
+    if (counters[0]) {
+
+      counters[0].dataset.target =
+        projectData.events;
+
+    }
+
+
+    if (counters[1]) {
+
+      counters[1].dataset.target =
+        projectData.countries;
+
+    }
+
+
+    if (counters[2]) {
+
+      counters[2].dataset.target =
+        projectData.interviews;
+
+    }
 
 
     function animateCounter(element) {
@@ -1329,7 +1625,8 @@
 
       const duration = 1600;
 
-      const startTime = performance.now();
+      const startTime =
+        performance.now();
 
 
       function update(currentTime) {
@@ -1343,8 +1640,8 @@
 
         /*
           Ease-out animation.
-          Starts quickly and slows down
-          near the final number.
+          Starts quickly and slows near the
+          final number.
         */
 
         const eased =
@@ -1445,6 +1742,7 @@
               const percentage =
                 projectData.progress;
 
+
               progressFill.style.width =
                 percentage + "%";
 
@@ -1490,45 +1788,11 @@
 
     /*
       ==========================================
-      AUTOMATICALLY APPLY PROJECT DATA
-      ==========================================
-    */
-
-    const counterElements =
-      document.querySelectorAll(".counter");
-
-
-    if (counterElements[0]) {
-
-      counterElements[0].dataset.target =
-        projectData.events;
-
-    }
-
-
-    if (counterElements[1]) {
-
-      counterElements[1].dataset.target =
-        projectData.countries;
-
-    }
-
-
-    if (counterElements[2]) {
-
-      counterElements[2].dataset.target =
-        projectData.interviews;
-
-    }
-
-
-    /*
-      ==========================================
-      SMALL MOUSE PARALLAX EFFECT
+      HERO PARALLAX EFFECT
       ==========================================
 
-      Gives the hero background a very subtle
-      movement on desktop.
+      Gives the background a very subtle
+      movement when the mouse moves.
     */
 
     const hero =
@@ -1549,6 +1813,59 @@
 
       hero.style.backgroundPosition =
         `${50 + x}% ${50 + y}%`;
+
+    });
+
+
+    /*
+      ==========================================
+      CARD MOUSE EFFECT
+      ==========================================
+
+      Creates a very subtle movement when
+      hovering over cards.
+    */
+
+    const cards =
+      document.querySelectorAll(".info-card, .stat-card");
+
+
+    cards.forEach(card => {
+
+      card.addEventListener("mousemove", event => {
+
+        if (window.innerWidth <= 850) return;
+
+
+        const rect =
+          card.getBoundingClientRect();
+
+
+        const x =
+          event.clientX - rect.left;
+
+        const y =
+          event.clientY - rect.top;
+
+
+        const rotateX =
+          ((y / rect.height) - 0.5) * -3;
+
+        const rotateY =
+          ((x / rect.width) - 0.5) * 3;
+
+
+        card.style.transform =
+          `translateY(-8px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+
+      });
+
+
+      card.addEventListener("mouseleave", () => {
+
+        card.style.transform = "";
+
+      });
 
     });
 
