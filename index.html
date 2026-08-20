@@ -566,7 +566,7 @@ section {
 }
 
 /* =========================
-   WORLD MAP
+   PROJECT REACH MAP
 ========================= */
 
 .map-section {
@@ -1240,13 +1240,13 @@ footer {
 
         <div
           class="stat-number project-counter"
-          data-target="31"
+          data-target="46"
         >
-          45
+          46
         </div>
 
         <div class="stat-label">
-          People reached through this website
+          Total website views
         </div>
 
       </div>
@@ -1256,13 +1256,13 @@ footer {
 
         <div
           class="stat-number project-counter"
-          data-target="1"
+          data-target="5"
         >
-          2
+          5
         </div>
 
         <div class="stat-label">
-          Countries reached
+          Regions reached
         </div>
 
       </div>
@@ -1415,7 +1415,7 @@ footer {
 
 
 <!-- =========================
-     WORLD VISITOR MAP
+     PROJECT REACH MAP
 ========================= -->
 
 <section
@@ -1436,8 +1436,9 @@ footer {
       </h2>
 
       <p>
-        The map shows country-level locations recorded for the project.
-        Locations are shown broadly rather than as exact addresses.
+        The map shows broad regional locations recorded for the project.
+        Locations are shown at a regional level rather than as exact
+        addresses.
       </p>
 
     </div>
@@ -1454,15 +1455,15 @@ footer {
           <span class="map-dot"></span>
 
           <span>
-            Country reached
+            Region reached
           </span>
 
         </div>
 
         <div class="visitor-count">
 
-          Countries recorded:
-          <span id="mapCountryCount">0</span>
+          Regions recorded:
+          <span id="mapRegionCount">0</span>
 
         </div>
 
@@ -1564,7 +1565,7 @@ footer {
 
         <p>
           Continue tracking visitors, interactions, events, interviews,
-          countries reached, and other meaningful parts of the project.
+          regions reached, and other meaningful parts of the project.
         </p>
 
       </div>
@@ -1718,7 +1719,9 @@ const projectData = {
 
   volunteerHours: 24,
 
-  peopleReached: 45,
+  totalViews: 46,
+
+  regions: 5,
 
   countries: 2,
 
@@ -1728,38 +1731,52 @@ const projectData = {
 
 
 /* =====================================================
-   VISITOR COUNTRY DATA
+   VISITOR REGION DATA
 =====================================================
 
-   Add countries here when your analytics shows that
-   your website has been visited from a new country.
+   Add regions here when your analytics shows that
+   your website has been visited from a new region.
 
-   These are COUNTRY-LEVEL locations.
-
+   Locations are intentionally broad regional locations.
    Do not enter someone's exact home address.
-
-   Example:
-
-   {
-     name: "Sweden",
-     lat: 60.1282,
-     lng: 18.6435
-   }
 
 ===================================================== */
 
-const visitorCountries = [
+const visitorRegions = [
 
   {
-    name: "United States",
-    lat: 39.8283,
-    lng: -98.5795
+    name: "Washington",
+    country: "United States",
+    lat: 47.4009,
+    lng: -120.4905
   },
 
   {
-    name: "Sweden",
-    lat: 60.1282,
-    lng: 18.6435
+    name: "California",
+    country: "United States",
+    lat: 36.7783,
+    lng: -119.4179
+  },
+
+  {
+    name: "New Mexico",
+    country: "United States",
+    lat: 34.5199,
+    lng: -105.8701
+  },
+
+  {
+    name: "Norrbotten County",
+    country: "Sweden",
+    lat: 67.8558,
+    lng: 20.2253
+  },
+
+  {
+    name: "North Carolina",
+    country: "United States",
+    lat: 35.7596,
+    lng: -79.0193
   }
 
 ];
@@ -1894,18 +1911,14 @@ function animateCounter(element) {
     const progress =
       Math.min(elapsed / duration, 1);
 
-
     const eased =
       1 - Math.pow(1 - progress, 3);
-
 
     const current =
       Math.floor(eased * target);
 
-
     element.textContent =
       current.toLocaleString();
-
 
     if (progress < 1) {
 
@@ -1946,25 +1959,21 @@ const counterObserver =
 
         if (entry.isIntersecting) {
 
-          const counters =
-            entry.target.querySelectorAll
-            ? entry.target.querySelectorAll(".counter")
-            : [];
-
-
           if (entry.target.classList.contains("counter")) {
 
             animateCounter(entry.target);
 
           }
 
+          if (
+            entry.target.classList.contains(
+              "project-counter"
+            )
+          ) {
 
-          counters.forEach(counter => {
+            animateCounter(entry.target);
 
-            animateCounter(counter);
-
-          });
-
+          }
 
           observer.unobserve(entry.target);
 
@@ -2018,7 +2027,7 @@ if (projectCounters[1]) {
 if (projectCounters[2]) {
 
   projectCounters[2].dataset.target =
-    projectData.peopleReached;
+    projectData.totalViews;
 
 }
 
@@ -2026,7 +2035,7 @@ if (projectCounters[2]) {
 if (projectCounters[3]) {
 
   projectCounters[3].dataset.target =
-    projectData.countries;
+    projectData.regions;
 
 }
 
@@ -2099,7 +2108,7 @@ progressObserver.observe(progressFill);
 
 
 /* =====================================================
-   WORLD VISITOR MAP
+   PROJECT REACH MAP
 ===================================================== */
 
 const visitorMap =
@@ -2141,17 +2150,17 @@ visitorMap.setView(
 
 
 /*
-  Add each recorded country.
+  Add each recorded region.
 
   The marker is intentionally placed at a broad
-  country-level location rather than an exact address.
+  regional location rather than an exact address.
 */
 
-visitorCountries.forEach(country => {
+visitorRegions.forEach(region => {
 
   const marker =
     L.circleMarker(
-      [country.lat, country.lng],
+      [region.lat, region.lng],
       {
         radius: 8,
         fillColor: "#4777ff",
@@ -2164,24 +2173,22 @@ visitorCountries.forEach(country => {
 
 
   marker.bindPopup(
-    `<strong>${country.name}</strong><br>
-     Project visitor location`
+    `<strong>${region.name}</strong><br>
+     ${region.country}<br>
+     Project visitor region`
   );
 
 });
 
 
 /*
-  Update country total.
-
-  This counts the unique countries currently
-  recorded in the visitorCountries list.
+  Update regional total.
 */
 
 document.getElementById(
-  "mapCountryCount"
+  "mapRegionCount"
 ).textContent =
-  projectData.countries;
+  visitorRegions.length;
 
 
 /* =====================================================
